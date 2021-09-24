@@ -12,7 +12,6 @@ mongoose.connect('mongodb+srv://aiden:tnsqhr8516@cluster0.lowzd.mongodb.net/myFi
 app.get('/', (req, res) => {
   res.send('Hello world!')
 })
-
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)
 })
