@@ -62,15 +62,6 @@ userSchema.methods.comparePassword = function (plainPassword, cb) {
    })
 }
 
-// userSchema.methods.comparePassword = function(plainPassword, cb) {
-//     // EX) plainPassword 1234567 암호화 된 비밀번호 $2b$10$llKn1D9TPnpw4ea7.ZeErOHGbzqQpWhF5o9sI7seTe/k8.Q5s.UMO
-//     bcrypt.compare(plainPassword, this.password, function(err, isMatch) {
-//         if(err) return cb(err);
-//         // else
-//         cb(null, isMatch);
-//     });
-// };
-
 userSchema.methods.generateToken = function(cb) {
     var user = this;
     //jsonwebtoken을 이용하여 token 생성
@@ -87,10 +78,10 @@ userSchema.methods.generateToken = function(cb) {
 userSchema.statics.findByToken = function (token, cb) {
     var user = this;
     // decode token
-    jwt.verify(token, "userToken", function (err, decoded) {
+    jwt.verify(token, "secretToken", function (err, decoded) {
       // using user id, find user id. then, check that token from client is equal to token from DB
   
-      user.findOne({ _id: decoded, token: token }, function (err, user) {
+      user.findOne({ "_id": decoded, "token": token }, function (err, user) {
         if (err) return cb(err);
         cb(null, user);
       });
