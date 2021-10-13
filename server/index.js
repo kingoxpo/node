@@ -31,6 +31,7 @@ app.post('/api/users/register', (req, res) => {
   
   //회원가입 시 필요한 정보들을 client에서 가져올 시 해당 정보를 DB에 저장한다.
   const user = new User(req.body)
+  
   user.save((err, userinfo) => {
     if (err) return res.json({ success: false, err })
     return res.status(200).json({

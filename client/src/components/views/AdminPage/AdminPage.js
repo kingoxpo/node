@@ -25,7 +25,7 @@ function LandingPage(props) {
             display: 'flex', justifyContent: 'center', alignItems: 'center'
             , width: '100%', height: '100vh'
         }}>
-            <h2>시작 페이지</h2>
+            <h2>관리자님 안녕하세요.</h2>
 
             <button onClick={onClickHandler}>
                 로그아웃 
